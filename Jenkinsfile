@@ -6,7 +6,7 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				sh "test=${params.WORKFLOW}"
+				sh "full=\"aws codebuild start-build --project-name nu-ecsplatform-orchestrator --environment-variables-override name=WORKFLOW,value=${params.WORKFLOW}\" && echo $full"
 				echo "Running ${params.WORKFLOW}"
 			}
 		}
