@@ -6,7 +6,7 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				sh 'bash ./pipeline.sh'
+				sh 'test="${params.WORKFLOW}"'
 				echo "Running ${params.WORKFLOW}"
 			}
 		}
