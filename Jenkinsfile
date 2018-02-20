@@ -1,7 +1,7 @@
 pipeline {
 	agent { docker 'python:3.5.1' }
 	environment { 
-		CC = 'clang'
+		CC = "${params.WORKFLOW}"
 	}
 	parameters {
 		string(name: 'WORKFLOW', defaultValue: 'build-site', description: 'What workflow to run?')
@@ -10,7 +10,6 @@ pipeline {
 		stage('build') {
 			steps {
 				sh 'echo $CC'
-				echo "Running ${params.WORKFLOW}"
 			}
 		}
 	}
