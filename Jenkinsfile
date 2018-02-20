@@ -9,6 +9,8 @@ pipeline {
 	stages {
 		stage('pre-build') {
 			steps {
+				sh 'whoami'
+				sh 'ls -al'
 				sh 'virtualenv venv && source venv/bin/activate && pip install boto3'
 			}
 		}
