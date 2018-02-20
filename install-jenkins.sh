@@ -24,11 +24,21 @@ sudo apt-get -y install docker-ce
 sudo usermod -aG docker $USER
 sudo usermod -aG docker jenkins
 
-# Prepare and install aws
 sudo apt-get -y install python3-pip
+
+# Prepare and install aws
+# Might not be required
 sudo pip3 install awscli --upgrade --user
-sudo ln -s ~/.local/bin/aws /usr/bin/aws
-sudo chown -R ubuntu:ubuntu .local
+# sudo ln -s ~/.local/bin/aws /usr/bin/aws
+# sudo chown -R ubuntu:ubuntu .local
+
+# Install boto3
+if ["" == `(which python)`]; then
+        # @todo If python3 does not exist install
+        sudo ln -s /usr/bin/python3 /usr/bin/python
+        sudo ln -s /usr/bin/pip3 /usr/bin/pip
+fi
+sudo pip install boto3
 
 mkdir ~/.aws
 touch ~/.aws/config
