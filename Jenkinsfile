@@ -9,7 +9,7 @@ pipeline {
 	stages {
 		stage('pre-build') {
 			steps {
-				sh 'sudo pip install boto3'
+				sh 'pip install boto3'
 			}
 		}
 		stage('build') {
