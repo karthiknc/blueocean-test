@@ -1,5 +1,6 @@
-#!/bin/bash
+import boto3
 
-echo ${params.WORKFLOW}
-full="aws codebuild start-build --project-name nu-ecsplatform-orchestrator --environment-variables-override name=WORKFLOW,value=${params.WORKFLOW}"
-echo $full
+client = boto3.client('codebuild')
+
+projects = client.list_projects()
+print(projects)

@@ -9,7 +9,7 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				sh 'sudo aws codebuild list-projects'
+				sh 'python ./pipeline.py'
 				sh 'full="aws codebuild start-build --project-name nu-ecsplatform-orchestrator --environment-variables-override name=WORKFLOW,value=$WF" && echo $full'
 			}
 		}
