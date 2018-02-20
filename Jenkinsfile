@@ -1,5 +1,5 @@
 pipeline {
-	agent { docker 'python:3.5.1' }
+	agent { docker 'python:3.6.1' }
 	parameters {
 		string(name: 'WORKFLOW', defaultValue: 'build-site', description: 'What workflow to run?')
 	}
@@ -9,7 +9,7 @@ pipeline {
 	stages {
 		stage('pre-build') {
 			steps {
-				sh 'pip install boto3 --user'
+				sh 'pip install boto3'
 			}
 		}
 		stage('build') {
