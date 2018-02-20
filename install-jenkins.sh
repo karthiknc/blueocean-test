@@ -23,3 +23,12 @@ sudo apt-get -y install docker-ce
 # Add Jenkins user to docker group
 sudo usermod -aG docker $USER
 sudo usermod -aG docker jenkins
+
+
+
+# Testing below
+# wget http://localhost:8080/jnlpJars/jenkins-cli.jar
+# java -jar jenkins-cli.jar -s http://localhost:8080/ help
+# java -jar ~/jenkins-cli.jar -s http://localhost:8080/ list-jobs --username karthik --password {pass}
+# java -jar ~/jenkins-cli.jar -s http://localhost:8080/ get-job blueocean-test > template.xml --username karthik --password {pass}
+# java -jar jenkins-cli.jar -s http://localhost:8080/ create-job build-test_demo-site < template.xml --username karthik --password {pass}
