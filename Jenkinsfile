@@ -7,6 +7,9 @@ pipeline {
 		WF = "${params.WORKFLOW}"
 	}
 	stages {
+		stage('pre-build') {
+			sh 'pip install boto3'
+		}
 		stage('build') {
 			steps {
 				sh 'pwd'
