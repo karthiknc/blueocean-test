@@ -9,7 +9,7 @@ pipeline {
 	stages {
 		stage('pre-build') {
 			steps {
-				sh 'virtualenv venv && source venv/bin/activate'
+				sh 'bash virtualenv venv && bash source venv/bin/activate'
 			}
 		}
 		stage('build') {
