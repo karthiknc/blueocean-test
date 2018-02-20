@@ -39,6 +39,7 @@ if ["" == `(which python)`]; then
         sudo ln -s /usr/bin/pip3 /usr/bin/pip
 fi
 sudo pip install boto3
+sudo pip install virtualenv
 
 mkdir ~/.aws
 touch ~/.aws/config

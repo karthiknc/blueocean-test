@@ -1,5 +1,5 @@
 pipeline {
-	agent { docker 'python:3.6.1' }
+	agent any
 	parameters {
 		string(name: 'WORKFLOW', defaultValue: 'build-site', description: 'What workflow to run?')
 	}
@@ -9,9 +9,7 @@ pipeline {
 	stages {
 		stage('pre-build') {
 			steps {
-				sh 'whoami'
-				sh 'ls -al'
-				sh 'virtualenv venv && source venv/bin/activate && pip install boto3'
+				sh 'virtualenv venv && source venv/bin/activate'
 			}
 		}
 		stage('build') {
