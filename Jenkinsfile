@@ -9,7 +9,7 @@ pipeline {
 	stages {
 		stage('pre-build') {
 			steps {
-				sh 'pip install boto3'
+				sh 'virtualenv venv && source venv/bin/activate && pip install boto3'
 			}
 		}
 		stage('build') {
