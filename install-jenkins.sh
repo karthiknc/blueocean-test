@@ -24,6 +24,17 @@ sudo apt-get -y install docker-ce
 sudo usermod -aG docker $USER
 sudo usermod -aG docker jenkins
 
+# Prepare and install aws
+sudo apt-get -y install python3-pip
+sudo pip3 install awscli --upgrade --user
+sudo ln -s ~/.local/bin/aws /usr/bin/aws
+sudo chown -R ubuntu:ubuntu .local
+
+mkdir ~/.aws
+touch ~/.aws/config
+echo '[default]' >> ~/.aws/config
+echo 'region = eu-west-1' >> ~/.aws/config
+echo 'output = json' >> ~/.aws/config
 
 
 # Testing below
