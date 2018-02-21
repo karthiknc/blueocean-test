@@ -10,12 +10,6 @@ pipeline {
 		choice(name: 'TEST', choices:"Yes\nNo", description: "Do you wish to run tests?" )
 		booleanParam(name: 'BOOL', defaultValue: true, description: 'Bool test')
 	}
-	environment { 
-		WF = "${params.WORKFLOW}"
-		SITE = "${params.SITE}"
-		TEST = "${params.TEST}"
-		BOOL = "${params.BOOL}"
-	}
 	stages {
 		stage('Prepare') {
 			steps {
