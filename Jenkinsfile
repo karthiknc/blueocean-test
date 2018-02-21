@@ -1,7 +1,7 @@
 pipeline {
 	agent {
 		docker {
-			image 'jfloff/alpine-python:3.4'
+			image 'jfloff/alpine-python:3.4-slim'
 		}
 	}
 	parameters {
