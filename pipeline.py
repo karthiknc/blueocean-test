@@ -16,7 +16,7 @@ env_var = os.environ['ENV']
 print(env_var)
 
 response = client.start_build(
-    projectName='nu-ecsplatform-orchestrator',
+    projectName='nu-ecsplatform-orchestrator2',
     environmentVariablesOverride=[
         {
             'name': 'WORKFLOW',
@@ -32,3 +32,5 @@ response = client.start_build(
         },
     ]
 )
+
+print(response)
