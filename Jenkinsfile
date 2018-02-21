@@ -6,6 +6,9 @@ pipeline {
 	}
 	parameters {
 		string(name: 'WORKFLOW', defaultValue: 'build-site', description: 'What workflow to run?')
+		string(name: 'SITE', defaultValue: 'my-site', description: 'What site to build?')
+		choice(name: 'TEST', choices:"Yes\nNo", description: "Do you wish to run tests?" )
+		booleanParam(name: 'BOOL', defaultValue: true, description: 'Bool test')
 	}
 	environment { 
 		WF = "${params.WORKFLOW}"
