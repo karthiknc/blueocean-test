@@ -13,7 +13,14 @@ pipeline {
 	stages {
 		stage('pre-build') {
 			steps {
-				sh 'pip install boto3'
+				sh '''
+				pip install boto3
+				mkdir ~/.aws
+				touch ~/.aws/config
+				echo '[default]' >> ~/.aws/config
+				echo 'region = eu-west-1' >> ~/.aws/config
+				echo 'output = json' >> ~/.aws/config
+				'''
 			}
 		}
 		stage('build') {
