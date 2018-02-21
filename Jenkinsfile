@@ -5,10 +5,10 @@ pipeline {
 		}
 	}
 	parameters {
-		string(name: 'WORKFLOW', defaultValue: 'build-site', description: 'What workflow to run?')
-		string(name: 'SITE', defaultValue: 'my-site', description: 'What site to build?')
-		choice(name: 'TEST', choices:"Yes\nNo", description: "Do you wish to run tests?" )
-		booleanParam(name: 'BOOL', defaultValue: true, description: 'Bool test')
+		choice(name: 'WORKFLOW', choices: 'Build site\nDeploy site\n Build and Deploy', description: 'What workflow to run?')
+		string(name: 'SITE', defaultValue: ${env.GIT_URL}, description: 'What site to build?')
+		string(name: 'BRANCH', defaultValue: 'master', description: 'Branch (Optional)')
+		booleanParam(name: 'TEST', defaultValue: true, description: 'Do you wish to run tests?')
 	}
 	stages {
 		stage('Prepare') {
