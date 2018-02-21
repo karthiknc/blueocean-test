@@ -12,6 +12,9 @@ pipeline {
 	}
 	environment { 
 		WF = "${params.WORKFLOW}"
+		SITE = "${params.SITE}"
+		TEST = "${params.TEST}"
+		BOOL = "${params.BOOL}"
 	}
 	stages {
 		stage('Prepare') {
