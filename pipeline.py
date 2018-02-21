@@ -1,7 +1,11 @@
 import os
 import boto3
 
-response = boto3.client('codebuild').start_build(
+client = boto3.client('codebuild')
+
+print(client.waiter_names)
+
+response = client.start_build(
     projectName='nu-ecsplatform-orchestrator',
     environmentVariablesOverride=[
         {
