@@ -1,5 +1,9 @@
 pipeline {
-	agent any
+	agent {
+		docker {
+			image 'jfloff/alpine-python:3.4'
+		}
+	}
 	parameters {
 		string(name: 'WORKFLOW', defaultValue: 'build-site', description: 'What workflow to run?')
 	}
@@ -9,7 +13,7 @@ pipeline {
 	stages {
 		stage('pre-build') {
 			steps {
-				sh 'bash virtualenv venv && bash source venv/bin/activate'
+				sh 'pip install boto3'
 			}
 		}
 		stage('build') {
