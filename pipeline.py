@@ -1,10 +1,7 @@
 import os
 import boto3
 
-client = boto3.client('codebuild')
-site = os.environ['GIT_URL'].split('/')[-1].split('.')[0]
-
-response = client.start_build(
+response = boto3.client('codebuild').start_build(
     projectName='nu-ecsplatform-orchestrator',
     environmentVariablesOverride=[
         {
@@ -13,7 +10,7 @@ response = client.start_build(
         },
         {
             'name': 'SITE',
-            'value': site
+            'value': os.environ['GIT_URL'].split('/')[-1].split('.')[0]
         },
         {
             'name': 'SITE_BRANCH',
