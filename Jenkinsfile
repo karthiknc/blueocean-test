@@ -6,8 +6,8 @@ pipeline {
 	}
 	parameters {
 		choice(name: 'WORKFLOW', choices: 'Build site\nDeploy site\n Build and Deploy', description: 'What workflow to run?')
-		choice(name: 'ENV', choices: 'dev\nuat\nstaging\nprod', description: 'What workflow to run?')
-		string(name: 'BRANCH', defaultValue: 'master', description: 'Branch (Optional)')
+		choice(name: 'BUILD_ENV', choices: 'dev\nuat\nstaging\nprod', description: 'Build environment:')
+		string(name: 'BRANCH', defaultValue: 'master', description: 'Branch (Optional):')
 		booleanParam(name: 'TEST', defaultValue: true, description: 'Do you wish to run tests?')
 	}
 	stages {
