@@ -1,8 +1,14 @@
 import os
 import boto3
 
+s3 = boto3.client('s3')
+print("s3 waiters:")
+s3.waiter_names
+
 client = boto3.client('codebuild')
 
+print("codebuild waiters:")
+client.waiter_names
 print(client.waiter_names)
 
 response = client.start_build(
