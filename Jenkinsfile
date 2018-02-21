@@ -6,7 +6,6 @@ pipeline {
 	}
 	parameters {
 		choice(name: 'WORKFLOW', choices: 'Build site\nDeploy site\n Build and Deploy', description: 'What workflow to run?')
-		string(name: 'SITE', defaultValue: 'demo', description: 'What site to build?')
 		string(name: 'BRANCH', defaultValue: 'master', description: 'Branch (Optional)')
 		booleanParam(name: 'TEST', defaultValue: true, description: 'Do you wish to run tests?')
 	}
