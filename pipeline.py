@@ -1,8 +1,8 @@
 import os
 import boto3
 
-s3 = boto3.client('s3')
-print("s3 waiters:")
+s3 = boto3.client('ec2')
+print("ec2 waiters:")
 print(s3.waiter_names)
 
 client = boto3.client('codebuild')
