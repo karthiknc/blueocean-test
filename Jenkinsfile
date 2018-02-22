@@ -1,7 +1,7 @@
 pipeline {
 	agent {
 		docker {
-			image 'jfloff/alpine-python:3.4-slim'
+			image 'newsuk/ecs-agent:latest'
 		}
 	}
 	parameters {
@@ -14,22 +14,15 @@ pipeline {
 		stage('Prepare') {
 			steps {
 				sh '''
-				pip install boto3
-				mkdir ~/.aws
-				touch ~/.aws/config
-				echo '[default]' >> ~/.aws/config
-				echo 'region = eu-west-1' >> ~/.aws/config
-				echo 'output = json' >> ~/.aws/config
+				cp ../../rsa_key ~/.ssh/id_rsa
+				chmod 600 ~/.ssh/id_rsa
+				git clone git@github.com:newsuk/nu-ecsplatform.git
+				ls -al
 				'''
 			}
 		}
 		stage('Build') {
 			steps {
-				sh '''
-				cd ../../
-				ls -al
-				'''
-				sh 'ls -al'
 				sh 'python ./pipeline.py'
 			}
 		}
