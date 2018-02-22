@@ -25,3 +25,12 @@ docker run \
   -v /var/run/docker.sock:/var/run/docker.sock \
   --name jenkins \
   jenkinsci/blueocean
+
+
+# Inside docker image add git authentication mechanism.
+# Better to fetch auth key in runtime
+# Adding ssh keys for now:
+# mkdir ~/.ssh
+# touch ~/.ssh/known_hosts
+# ssh-keyscan github.com >> ~/.ssh/known_hosts
+# Generate ssh key

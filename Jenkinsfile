@@ -25,6 +25,10 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
+				dir('RepoOne') {
+					git url: 'https://github.com/newsuk/nu-ecsplatform.git'
+				}
+				sh 'ls -al'
 				sh 'python ./pipeline.py'
 			}
 		}
