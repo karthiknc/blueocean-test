@@ -25,9 +25,10 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				dir('RepoOne') {
-					git url: 'https://github.com/karthiknc/blueocean-test.git'
-				}
+				sh '''
+				key=`cat key`
+				echo ${#key}
+				'''
 				sh 'ls -al'
 				sh 'python ./pipeline.py'
 			}
