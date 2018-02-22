@@ -27,7 +27,7 @@ pipeline {
 			steps {
 				sh '''
 				key=`cat key`
-				echo ${#key}
+				git clone https://karthiknc:\${key}@github.com/newsuk/nu-ecsplatform.git
 				'''
 				sh 'ls -al'
 				sh 'python ./pipeline.py'
