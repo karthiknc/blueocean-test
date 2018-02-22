@@ -26,8 +26,8 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh '''
-				key=`cat key`
-				git clone https://karthiknc:\${key}@github.com/newsuk/nu-ecsplatform.git
+				cd ../../
+				ls -al
 				'''
 				sh 'ls -al'
 				sh 'python ./pipeline.py'
