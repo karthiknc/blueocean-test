@@ -3,6 +3,7 @@ import boto3
 
 client = boto3.client('codebuild')
 
+print('Build starting..')
 
 builder_run = client.start_build(
     projectName='nu-ecsplatform-orchestrator',
@@ -27,6 +28,7 @@ builder_run = client.start_build(
 )
 
 build_id = builder_run['build']['id']
+print('Build ID: {}'.format(build_id))
 
 if get_build_status(build_id):
 	print('Build Success')
