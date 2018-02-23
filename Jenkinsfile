@@ -1,7 +1,7 @@
 pipeline {
 	agent {
 		docker {
-			image 'newsuk/ecs-agent:latest'
+			image 'jfloff/alpine-python:3.4-slim'
 		}
 	}
 	parameters {
@@ -13,7 +13,14 @@ pipeline {
 	stages {
 		stage('Prepare') {
 			steps {
-				echo 'Prepare stage'
+				sh '''
+				pip install boto3
+				mkdir ~/.aws
+				touch ~/.aws/config
+				echo '[default]' >> ~/.aws/config
+				echo 'region = eu-west-1' >> ~/.aws/config
+				echo 'output = json' >> ~/.aws/config
+				'''
 			}
 		}
 		stage('Build') {
