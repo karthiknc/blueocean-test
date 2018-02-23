@@ -1,7 +1,11 @@
 import os
 import boto3
+import pprint
 
 client = boto3.client('codebuild')
+
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(os.environ)
 
 print('Build starting..')
 
