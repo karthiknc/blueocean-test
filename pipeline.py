@@ -8,39 +8,6 @@ if 'WORKFLOW' not in os.environ:
 	print('Initial build. Exiting..')
 	exit()
 
-print('Build starting..')
-
-builder_run = client.start_build(
-    projectName='nu-ecsplatform-orchestrator',
-    environmentVariablesOverride=[
-        {
-            'name': 'WORKFLOW',
-            'value': os.environ['WORKFLOW']
-        },
-        {
-            'name': 'SITE',
-            'value': os.environ['GIT_URL'].split('/')[-1].split('.')[0]
-        },
-        {
-            'name': 'SITE_BRANCH',
-            'value': os.environ['BRANCH']
-        },
-        {
-            'name': 'BUILD_ENV',
-            'value': os.environ['BUILD_ENV']
-        }
-    ]
-)
-
-build_id = builder_run['build']['id']
-print('Build ID: {}'.format(build_id))
-
-if get_build_status(build_id):
-	print('Build Success')
-else:
-    raise Exception('Build failed. build_id: {}'.format(build_id))
-
-# After this get artifacts. Maybe from s3 or cloudwatch
 
 def get_build_status(build_id):
     running = True
@@ -73,3 +40,39 @@ def get_build_status(build_id):
                 print('Failed.')
 
     return build_success
+
+
+print('Build starting..')
+
+
+builder_run = client.start_build(
+    projectName='nu-ecsplatform-orchestrator',
+    environmentVariablesOverride=[
+        {
+            'name': 'WORKFLOW',
+            'value': os.environ['WORKFLOW']
+        },
+        {
+            'name': 'SITE',
+            'value': os.environ['GIT_URL'].split('/')[-1].split('.')[0]
+        },
+        {
+            'name': 'SITE_BRANCH',
+            'value': os.environ['BRANCH']
+        },
+        {
+            'name': 'BUILD_ENV',
+            'value': os.environ['BUILD_ENV']
+        }
+    ]
+)
+
+build_id = builder_run['build']['id']
+print('Build ID: {}'.format(build_id))
+
+if get_build_status(build_id):
+	print('Build Success')
+else:
+    raise Exception('Build failed. build_id: {}'.format(build_id))
+
+# After this get artifacts. Maybe from s3 or cloudwatch
