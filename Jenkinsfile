@@ -16,14 +16,6 @@ pipeline {
 				echo 'Prepare stage'
 			}
 		}
-		stage('Tests') {
-			when {
-				environment name: 'TEST', value: true
-			}
-			steps {
-				echo 'Running tests..'
-			}
-		}
 		stage('Build') {
 			steps {
 				sh 'python ./pipeline.py'
