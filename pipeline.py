@@ -1,13 +1,15 @@
 import os
+import time
 import boto3
 
-client = boto3.client('codebuild')
 
-print(os.environ)
 if 'WORKFLOW' not in os.environ:
 	print('Initial build. Exiting..')
 	exit()
 
+
+client = boto3.client('codebuild')
+CODEBUILD_PROJECT = 'ecs-jenkins-test'
 
 def get_build_status(build_id):
     running = True
@@ -46,7 +48,7 @@ print('Build starting..')
 
 
 builder_run = client.start_build(
-    projectName='nu-ecsplatform-orchestrator',
+    projectName=CODEBUILD_PROJECT,
     environmentVariablesOverride=[
         {
             'name': 'WORKFLOW',
