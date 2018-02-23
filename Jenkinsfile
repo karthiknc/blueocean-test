@@ -13,12 +13,15 @@ pipeline {
 	stages {
 		stage('Prepare') {
 			steps {
-				sh '''
-				cp ../../rsa_key ~/.ssh/id_rsa
-				chmod 600 ~/.ssh/id_rsa
-				git clone git@github.com:newsuk/nu-ecsplatform.git
-				ls -al
-				'''
+				echo 'Prepare stage'
+			}
+		}
+		stage('Tests') {
+			when {
+				environment name: 'TEST', value: true
+			}
+			steps {
+				echo 'Running tests..'
 			}
 		}
 		stage('Build') {

@@ -36,3 +36,13 @@ docker run \
 # touch ~/.ssh/known_hosts
 # ssh-keyscan github.com >> ~/.ssh/known_hosts
 # Generate ssh key
+
+# Jenkinsfile preparation step
+# steps {
+#   sh '''
+#   cp ../../rsa_key ~/.ssh/id_rsa
+#   chmod 600 ~/.ssh/id_rsa
+#   git clone git@github.com:newsuk/nu-ecsplatform.git
+#   ls -al
+#   '''
+# }
