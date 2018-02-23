@@ -26,7 +26,6 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh 'python --version'
-				sh 'python3 --version'
 				sh 'python ./pipeline.py'
 			}
 		}
