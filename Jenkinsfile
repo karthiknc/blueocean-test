@@ -20,6 +20,7 @@ pipeline {
 			steps {
 				sh 'ls -al'
 				sh 'pwd'
+				sh 'cat ./pipeline.py'
 				sh 'python ./pipeline.py'
 			}
 		}
