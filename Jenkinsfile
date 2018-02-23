@@ -18,7 +18,7 @@ pipeline {
 		}
 		stage('Tests') {
 			when {
-				environment name: 'TEST', value: true
+				environment name: 'TEST', value: 'true'
 			}
 			steps {
 				echo 'Testing everything'
