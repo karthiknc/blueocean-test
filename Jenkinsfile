@@ -18,8 +18,6 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				sh 'pwd'
-				sh 'cat ./pipeline.py'
 				sh 'python ./pipeline.py'
 			}
 		}

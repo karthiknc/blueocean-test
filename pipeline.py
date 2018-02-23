@@ -1,11 +1,12 @@
 import os
 import boto3
-import pprint
 
 client = boto3.client('codebuild')
 
-pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(os.environ)
+print(os.environ)
+if 'WORKFLOW' not in os.environ:
+	print('Initial build. Exiting..')
+	exit()
 
 print('Build starting..')
 
