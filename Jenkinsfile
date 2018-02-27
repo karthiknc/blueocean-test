@@ -27,6 +27,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh 'python ./pipeline.py'
+				archiveArtifacts artifacts: '*.log', fingerprint: true
 			}
 		}
 	}

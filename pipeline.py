@@ -76,6 +76,9 @@ print('Build ID: {}'.format(build_id))
 response = client.batch_get_builds(ids=[build_id])
 print(response)
 
+with open('codebuild.log','w') as f:
+    f.write('Test this loggg...')
+
 # if get_build_status(build_id):
 #     print('Build Success')
 # else:
