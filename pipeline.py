@@ -1,6 +1,7 @@
 import os
 import time
 import boto3
+from botocore.exceptions import ClientError
 
 
 if 'WORKFLOW' not in os.environ:
@@ -81,7 +82,7 @@ s3 = boto3.resource('s3')
 try:
     print('Fetching artifact from {}'.format(arn))
     s3.Bucket(bucket).download_file(arn_split[1], 'codebuild.log')
-except botocore.exceptions.ClientError as e:
+except ClientError as e:
     print("Could not fetch artifact from s3 bucket.")
 
 # if get_build_status(build_id):
