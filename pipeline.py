@@ -79,6 +79,9 @@ arn_split = arn.split('/', 1)
 bucket = arn_split[0].split(':::')[-1]
 s3 = boto3.resource('s3')
 
+
+print(bucket)
+print(arn_split[1])
 try:
     print('Fetching artifact from {}'.format(arn))
     s3.Bucket(bucket).download_file(arn_split[1], 'codebuild.log')
