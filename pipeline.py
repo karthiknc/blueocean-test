@@ -84,7 +84,7 @@ print(bucket)
 print(arn_split[1])
 try:
     print('Fetching artifact from {}'.format(arn))
-    # s3.Bucket(bucket).download_file(arn_split[1], 'codebuild.log')
+    s3.Bucket(bucket).download_file(arn_split[1], 'codebuild.log')
 except ClientError as e:
     print("Could not fetch artifact from s3 bucket.")
 
