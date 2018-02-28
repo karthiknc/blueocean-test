@@ -13,6 +13,7 @@ pipeline {
 	stages {
 		stage('Prepare') {
 			steps {
+				sh 'touch codebuild.log'
 				echo 'Preparation done.'
 			}
 		}
