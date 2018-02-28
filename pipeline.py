@@ -73,11 +73,16 @@ CODEBUILD_PROJECT = 'ecs-jenkins-test'
 build_id = 'ecs-jenkins-test:0a2f3849-72bc-4ebe-b66c-50c32b65dff1'
 print('Build ID: {}'.format(build_id))
 
-response = client.batch_get_builds(ids=[build_id])
-print(response)
+arn = client.batch_get_builds(ids=[build_id])['builds'][0]['artifacts']['location']
+arn_split = arn.split('/', 1)
+bucket = arn_split[0].split(':::')[-1]
+s3 = boto3.resource('s3')
 
-with open('codebuild.log','w') as f:
-    f.write('Test this loggg...')
+try:
+    print('Fetching artifact from {}'.format(arn))
+    s3.Bucket(bucket).download_file(arn_split[1], 'codebuild.log')
+except botocore.exceptions.ClientError as e:
+    print("Could not fetch artifact from s3 bucket.")
 
 # if get_build_status(build_id):
 #     print('Build Success')
