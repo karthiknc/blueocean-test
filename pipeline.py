@@ -20,7 +20,7 @@ class Pipeline:
     def run_build(self):
         print('Build starting..')
         for i in range(0, 10):
-            time.sleep(3)
+            time.sleep(1)
             print(i)
 
     def manage_artifacts(self, build_id):
