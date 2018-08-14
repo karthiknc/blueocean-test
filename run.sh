@@ -3,8 +3,8 @@
 "$@" &
 
 while kill -0 $!; do
-    printf '.' > /dev/tty
+    printf '.'
     sleep 2
 done
 
-printf '\n' > /dev/tty
+printf '\n'
