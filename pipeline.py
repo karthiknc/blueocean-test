@@ -20,7 +20,7 @@ class Pipeline:
     def run_build(self):
         print('Build starting..')
         for i in range(0, 10):
-            time.sleep(1)
+            time.sleep(3)
             print(i)
 
     def manage_artifacts(self, build_id):
@@ -34,5 +34,4 @@ if __name__ == '__main__':
     pl = Pipeline()
     pl.prepare()
     bid = pl.run_build()
-    exit(0)
     pl.manage_artifacts(bid)
