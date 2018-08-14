@@ -34,4 +34,5 @@ if __name__ == '__main__':
     pl = Pipeline()
     pl.prepare()
     bid = pl.run_build()
+    exit(0)
     pl.manage_artifacts(bid)
