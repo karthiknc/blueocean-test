@@ -1,37 +1,16 @@
-import os
 import time
-import sys
-import subprocess
-import boto3
-from botocore.exceptions import ClientError
 
 
-class Pipeline:
-    ARTIFACT_FILES = ['orchestrator.log']
-
+class Run:
     def __init__(self):
-        if 'WORKFLOW' not in os.environ:
-            print('Initial build. Exiting..')
-            exit()
-
-    def prepare(self):
         pass
 
-    def run_build(self):
-        print('Build starting..')
+    def run_pipeline(self):
         for i in range(0, 10):
-            time.sleep(3)
             print(i)
-
-    def manage_artifacts(self, build_id):
-        try:
-            print('Fetching artifact from {}'.format(arn))
-        except ClientError:
-            print('Could not fetch artifact from s3 bucket.')
+            time.sleep(3)
 
 
 if __name__ == '__main__':
-    pl = Pipeline()
-    pl.prepare()
-    bid = pl.run_build()
-    pl.manage_artifacts(bid)
+    run = Run()
+    run.run_pipeline()
